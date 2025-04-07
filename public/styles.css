@@ -1,0 +1,719 @@
+/* Import Prata font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Prata&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Prata', serif;
+}
+
+body {
+    font-family: 'Prata', serif;
+    line-height: 1.6;
+    color: #333;    
+    padding-top: 60px; /* Add padding equal to header height */
+}
+
+/* Header - Dark */
+header {
+    background-color: #1a1a1a;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; /* Change from relative to fixed */
+    width: 100%; /* Ensure it spans full width */
+    top: 0; /* Stick to top */
+    left: 0; /* Align to left edge */
+    z-index: 1000; /* Ensure header stays above other content */
+}
+
+header .logo, .logo-text {
+    color: #fff;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #fff;
+}
+
+/* Desktop navigation */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 400;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #e0e0e0;
+}
+
+/* Hide mobile nav by default */
+.mobile-nav {
+    display: none;
+}
+
+/* Remove old mobile-only class */
+.mobile-only {
+    display: none;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    /* Hide desktop navigation */
+    nav ul:not(.mobile-nav) {
+        display: none;
+    }
+
+    /* Show mobile navigation */
+    .mobile-nav {
+        display: flex;
+        gap: 15px;
+    }
+
+    .mobile-nav li a {
+        font-size: 0.9rem;
+        color: #fff;
+    }
+
+    /* Ensure logo text is visible on mobile */
+    .logo-text {
+        display: block;
+        font-size: 1.2rem;
+    }
+
+    body {
+        padding-top: 50px; /* Slightly less padding for mobile */
+    }
+}
+
+/* Services section - Light */
+.services {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px 20px;
+    background-color: #f5f5f5;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.service-item {
+    text-align: center;
+    max-width: 300px;
+    flex: 1;
+}
+
+.service-item img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.service-item h3 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #1a1a1a;
+    font-weight: 400;
+}
+
+.service-item p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Mobile styles for services section */
+@media (max-width: 768px) {
+    .services {
+        padding: 30px 15px;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .service-item {
+        max-width: 100%;
+        display: flex;
+        align-items: center;
+        text-align: left;
+        padding: 15px;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .service-item img {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 0;
+        margin-right: 20px;
+        object-fit: contain;
+    }
+
+    .service-item .service-content {
+        flex: 1;
+    }
+
+    .service-item h3 {
+        font-size: 1.3rem;
+        margin-bottom: 5px;
+    }
+
+    .service-item p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+}
+
+/* Carousel section - Light */
+.carousel-section {
+    padding: 50px 20px;
+    background-color: #f5f5f5;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #1a1a1a;
+    margin-bottom: 40px;
+    font-weight: 400;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto; /* Remove top margin since we now have a section header */
+    overflow: hidden;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+}
+
+.carousel-item {
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    gap: 40px;
+}
+
+.carousel-item .text {
+    flex: 1;
+    max-width: 50%;
+}
+
+.carousel-item .text h2 {
+    font-size: 2rem;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.carousel-item .text p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #666;
+}
+
+.carousel-item .image {
+    flex: 1;
+    max-width: 50%;
+    height: 400px; /* Fixed height for consistent sizing */
+}
+
+.carousel-item .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This will maintain aspect ratio while filling the container */
+}
+
+.carousel-buttons {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    pointer-events: none; /* This ensures clicks go through to the buttons */
+}
+
+.carousel-buttons button {
+    background-color: rgba(26, 26, 26, 0.7);
+    color: #fff;
+    border: none;
+    padding: 15px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    pointer-events: auto; /* Re-enable clicks on buttons */
+}
+
+.carousel-buttons button:hover {
+    background-color: rgba(26, 26, 26, 0.9);
+}
+
+/* Mobile styles for carousel */
+@media (max-width: 768px) {
+    .carousel-item {
+        flex-direction: column;
+        padding: 30px 20px;
+        gap: 20px;
+    }
+
+    .carousel-item .text,
+    .carousel-item .image {
+        max-width: 100%;
+    }
+
+    .carousel-item .image {
+        height: 300px; /* Slightly smaller height for mobile */
+    }
+
+    .carousel-item .text h2 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    .carousel-item .text p {
+        font-size: 0.9rem;
+    }
+
+    .carousel-buttons {
+        padding: 0 10px;
+    }
+
+    .carousel-buttons button {
+        padding: 10px 15px;
+    }
+
+    .carousel-section {
+        padding: 30px 15px;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+    }
+}
+
+/* About section - Dark */
+.about-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px;
+    background-color: #1a1a1a;
+}
+
+.about-container {
+    display: flex;
+    flex-direction: row;
+    max-width: 1200px;
+    width: 100%;
+    gap: 20px;
+    align-items: center;
+}
+
+.about-image img {
+    max-width: 300px;
+    width: 100%;
+    border-radius: 0; /* Changed from 10px to 0 */
+    object-fit: cover;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text h2 {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.about-text p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+    }
+
+    .mobile-only {
+        display: block;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #fff;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .carousel-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .carousel-item .text {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .carousel-item .image {
+        max-width: 100%;
+    }
+
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-image img {
+        max-width: 100%;
+    }
+}
+
+/* Before & After section - Light */
+.before-after-section {
+    padding: 50px 20px;
+    background-color: #f5f5f5;
+    text-align: center;
+}
+
+.before-after-section h2 {
+    font-size: 2rem;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.slider-container {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 0; /* Changed from 10px to 0 */
+}
+
+.slider-wrapper {
+    position: relative;
+    width: 100%;
+    /* Add a fixed aspect ratio container */
+    padding-top: 75%; /* 4:3 aspect ratio - adjust as needed */
+}
+
+.slider-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Change from auto to 100% */
+    object-fit: cover;
+}
+
+.slider-image.before {
+    z-index: 1; /* Ensure before image is behind */
+}
+
+.slider-image.after {
+    clip-path: inset(0 0 0 50%); /* Changed from (0 50% 0 0) to (0 0 0 50%) */
+    z-index: 2;
+}
+
+.slider-handle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    background-color: #fff; /* Changed to white for better visibility */
+    cursor: ew-resize;
+    transform: translateX(-50%);
+    z-index: 3; /* Ensure handle is on top */
+}
+
+/* Add a circle handle for better grabbing */
+.slider-handle::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 50%; /* Keeping this circular as it's a UI element */
+    border: 3px solid #1a1a1a;
+}
+
+/* Photos section - Dark */
+.photos-section {
+    padding: 50px 20px;
+    background-color: #1a1a1a;
+    text-align: center;
+}
+
+.photos-section h2 {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.photos-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.photo-item {
+    overflow: hidden;
+    border-radius: 0; /* Changed from 10px to 0 */
+}
+
+.photo-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 0; /* Changed from 10px to 0 */
+    transition: transform 0.3s ease;
+}
+
+.photo-item img:hover {
+    transform: scale(1.1); /* Adds a zoom-in effect on hover */
+}
+
+/* Footer - Light */
+footer {
+    background-color: #f5f5f5;
+    color: #1a1a1a;
+    text-align: center;
+    padding: 10px 20px;
+}
+
+footer p {
+    font-size: 0.9rem;
+}
+
+/* Hero section - Dark */
+.hero {
+    background-color: #1a1a1a;
+    text-align: center;
+    padding: 50px 20px;
+    color: #fff;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: 400;
+    color: #fff;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #e0e0e0;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero button {
+    background-color: #fff;
+    color: #1a1a1a;
+    padding: 15px 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-family: 'Prata', serif;
+}
+
+.hero button:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+}
+
+/* Add responsive styles for mobile */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        padding: 0 20px;
+    }
+
+    .hero button {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+}
+
+/* CTA Button section */
+.cta-container {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #f5f5f5; /* Match services section background */
+    margin-top: -20px; /* Negative margin to reduce gap with services section */
+}
+
+.cta-button {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 18px 40px;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Prata', serif;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.cta-button:active {
+    transform: translateY(0);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .cta-container {
+        padding: 30px 15px;
+    }
+
+    .cta-button {
+        padding: 15px 30px;
+        font-size: 1.1rem;
+        width: 80%; /* Make button wider on mobile */
+        max-width: 300px; /* But not too wide */
+    }
+}
+
+/* Services Grid Section */
+.services-grid {
+    padding: 60px 20px;
+    background-color: #f5f5f5;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background-color: #fff;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.service-image {
+    width: 100%;
+    height: 180px; /* Reduced from 300px to 180px */
+    position: relative;
+    overflow: hidden;
+}
+
+.service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%; /* Adjusted to better focus on brow area */
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-image img {
+    transform: scale(1.05); /* Subtle zoom on hover */
+}
+
+/* Content spacing adjustments */
+.service-card h2 {
+    font-size: 1.5rem;
+    margin: 20px 30px 15px; /* Reduced top margin */
+    line-height: 1.3;
+}
+
+.service-card p {
+    margin: 0 30px;
+    flex-grow: 1;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.service-card .book-now-btn {
+    margin: 15px 30px 25px; /* Adjusted margins */
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Mobile styles update */
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr; /* Single column on mobile */
+        gap: 20px;
+        padding: 30px 15px;
+    }
+
+    .service-image {
+        height: 150px; /* Reduced height for mobile */
+    }
+
+    .service-card h2 {
+        font-size: 1.3rem;
+        margin: 15px 20px 10px; /* Reduced margins for mobile */
+    }
+
+    .service-card p {
+        margin: 0 20px;
+        font-size: 0.9rem;
+    }
+
+    .service-card .book-now-btn {
+        margin: 15px 20px 20px;
+        width: calc(100% - 40px);
+    }
+}
