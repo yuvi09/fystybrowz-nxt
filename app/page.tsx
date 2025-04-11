@@ -6,12 +6,32 @@ export default function HomePage() {
     const [currentItem, setCurrentItem] = useState(0);
     const totalItems = 5; // Total number of carousel items
     
+    // TODO: Replace with your actual TidyCal URL
+    const tidyCalBookingUrl = "https://tidycal.com/fystybrowz";
+    
+    // State to control the booking modal
+    const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+    
     const prevItem = () => {
         setCurrentItem((prev) => (prev === 0 ? totalItems - 1 : prev - 1));
     };
     
     const nextItem = () => {
         setCurrentItem((prev) => (prev === totalItems - 1 ? 0 : prev + 1));
+    };
+    
+    // Function to open the booking modal
+    const openBookingModal = () => {
+        setIsBookingModalOpen(true);
+        // Prevent scrolling when modal is open
+        document.body.style.overflow = 'hidden';
+    };
+    
+    // Function to close the booking modal
+    const closeBookingModal = () => {
+        setIsBookingModalOpen(false);
+        // Re-enable scrolling
+        document.body.style.overflow = 'auto';
     };
     
     useEffect(() => {
@@ -123,7 +143,9 @@ export default function HomePage() {
         </section>
 
         <div className="cta-container">
-            <button className="cta-button">Book Now</button>
+            <a href={tidyCalBookingUrl} target="_blank" rel="noopener noreferrer">
+                <button className="cta-button">Book Now</button>
+            </a>
         </div>
 
         <section className="about-section">
@@ -205,44 +227,44 @@ export default function HomePage() {
             <div className="service-card">
                 <h2>Microblading Brows</h2>
                 <p>Permanent Makeup - Microblading offers a semi-permanent solution for beautifully defined brows, enhancing your natural features with precision. This technique creates realistic hair-like strokes, ensuring a long-lasting and effortless look that saves you time on your daily beauty routine.</p>
-                <button className="book-now-btn">Book Now</button>
+                <button className="book-now-btn" onClick={openBookingModal}>Book Now</button>
             </div>
         
             <div className="service-card">
                 <h2>Ombré Powder Brows</h2>
                 <p>Ombré Powder Brows provide a soft, gradient effect that enhances the natural shape of your eyebrows while offering long-lasting definition. This semi-permanent technique is perfect for those seeking a defined yet subtle look, ideal for any occasion.</p>
-                <button className="book-now-btn">Book Now</button>
+                <button className="book-now-btn" onClick={openBookingModal}>Book Now</button>
             </div>
         
             <div className="service-card">
                 <h2>Combination Brows</h2>
                 <p>Combination Brows offer the best of both worlds by blending microblading and shading techniques for a natural yet defined look. This service enhances the shape and fullness of your eyebrows, providing a polished appearance that lasts.</p>
-                <button className="book-now-btn">Book Now</button>
+                <button className="book-now-btn" onClick={openBookingModal}>Book Now</button>
             </div>
         
             <div className="service-card">
                 <h2>Correction Brows (previous Microblading/shading)</h2>
                 <p>Correction Brows service specializes in refining and enhancing previous microblading or shading procedures to achieve a more natural and balanced appearance. This service addresses issues such as fading, unevenness, or color discrepancies, ensuring clients leave with beautifully shaped brows.</p>
-                <button className="book-now-btn">Book Now</button>
+                <button className="book-now-btn" onClick={openBookingModal}>Book Now</button>
             </div>
         
             <div className="service-card">
                 <h2>4-10 weeks Eyebrow Touchup</h2>
                 <p>Touchup services for microblading and ombré powder are essential for maintaining the vibrancy and precision of your initial treatment. These services not only extend the life of your brows but also ensure they remain fresh and well-defined.</p>
-                <button className="book-now-btn">Book Now</button>
+                <button className="book-now-btn" onClick={openBookingModal}>Book Now</button>
             </div>
         
             <div className="service-card">
                 <h2>Annual Eyebrow Touchup</h2>
                 <p>This treatment is highly suggested for maintaining the definition and boldness of your eyebrows throughout the year.</p>
-                <button className="book-now-btn">Book Now</button>
+                <button className="book-now-btn" onClick={openBookingModal}>Book Now</button>
             </div>
         </section>
 
         <section className="hero">
             <h1>Experience Flawless Results</h1>
             <p>Discover the art of precision and beauty with our premium services.</p>
-            <button>Book an Appointment</button>
+            <button onClick={openBookingModal}>Book an Appointment</button>
         </section>
 
         <section className="before-after-section">
@@ -283,6 +305,21 @@ export default function HomePage() {
         <footer>
             <p>&copy; 2025 FYSTYBROWZ. All rights reserved.</p>
         </footer>
+
+        {/* Booking Modal */}
+        {isBookingModalOpen && (
+            <div className="booking-modal-overlay" onClick={closeBookingModal}>
+                <div className="booking-modal-content" onClick={(e) => e.stopPropagation()}>
+                    <button className="modal-close-btn" onClick={closeBookingModal}>×</button>
+                    <iframe 
+                        src={tidyCalBookingUrl}
+                        frameBorder="0"
+                        style={{ width: '100%', height: '100%', border: 'none' }}
+                        title="Book an appointment"
+                    ></iframe>
+                </div>
+            </div>
+        )}
       </main>
     );
   }
