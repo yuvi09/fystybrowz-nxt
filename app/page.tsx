@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import reviewsData from '../data/reviews.json';
 
 export default function HomePage() {
     const [currentItem, setCurrentItem] = useState(0);
@@ -12,12 +13,23 @@ export default function HomePage() {
     // State to control the booking modal
     const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
     
+    const [currentReview, setCurrentReview] = useState(0);
+    const totalReviews = reviewsData.reviews.length;
+    
     const prevItem = () => {
         setCurrentItem((prev) => (prev === 0 ? totalItems - 1 : prev - 1));
     };
     
     const nextItem = () => {
         setCurrentItem((prev) => (prev === totalItems - 1 ? 0 : prev + 1));
+    };
+    
+    const prevReview = () => {
+        setCurrentReview((prev) => (prev === 0 ? totalReviews - 1 : prev - 1));
+    };
+    
+    const nextReview = () => {
+        setCurrentReview((prev) => (prev === totalReviews - 1 ? 0 : prev + 1));
     };
     
     // Function to open the booking modal
@@ -298,6 +310,52 @@ export default function HomePage() {
                 </div>
                 <div className="photo-item">
                     <img src="/images/work_sp6.jpg" alt="Glamour Photo 6" />
+                </div>
+            </div>
+        </section>
+
+        <section className="reviews-section">
+            <h2>Client Reviews</h2>
+            <div className="reviews-carousel" style={{ overflow: 'hidden', maxWidth: 500, margin: '0 auto' }}>
+                <div
+                    className="reviews-carousel-inner"
+                    style={{
+                        display: 'flex',
+                        transition: 'transform 0.5s ease',
+                        width: `${totalReviews * 100}%`,
+                        transform: `translateX(-${currentReview * (100 / totalReviews)}%)`
+                    }}
+                >
+                    {reviewsData.reviews.map((review) => (
+                        <div
+                            key={review.id}
+                            className="review-card"
+                            style={{ width: `${100 / totalReviews}%`, flex: `0 0 ${100 / totalReviews}%` }}
+                        >
+                            <div className="review-header">
+                                <div className="review-name">{review.name}</div>
+                                <div className="review-date">{new Date(review.date).toLocaleDateString()}</div>
+                            </div>
+                            <div className="review-rating">
+                                {[...Array(review.rating)].map((_, i) => (
+                                    <span key={i} className="star">★</span>
+                                ))}
+                            </div>
+                            <div className="review-comment">{review.comment}</div>
+                        </div>
+                    ))}
+                </div>
+                <div className="reviews-buttons">
+                    <button onClick={prevReview} aria-label="Previous review">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M13 16L8 10L13 4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                    </button>
+                    <button onClick={nextReview} aria-label="Next review">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M7 4L12 10L7 16" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </section>

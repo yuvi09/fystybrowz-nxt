@@ -1,0 +1,32 @@
+{
+  "reviews": [
+    {
+      "id": 1,
+      "name": "Sarah M.",
+      "rating": 5,
+      "comment": "Before Sofia worked on my brows, they were my biggest insecurity. Now, I feel brand new and LOVE my brows! Sofia took her time to carefully map my brows to perfection and maintain my natural shape while filling in where I was missing hair. She made me so comfortable throughout the entire appointment and I experienced no pain. Sofia thoroughly explained the healing process to me and even sent me home with the cutest little aftercare goodie bag. Thank you for my new brows Sofia!!!",
+      "date": "2024-03-15"
+    },
+    {
+      "id": 2,
+      "name": "Jessica L.",
+      "rating": 5,
+      "comment": "Sofia is absolutely the best at what she does, she communicates super well, explains every aspect of the process, and goes above and beyond. Would recommend her to anyone looking for SMP or Removal. Thank you for all of your help Sofia!",
+      "date": "2024-03-10"
+    },
+    {
+      "id": 3,
+      "name": "Emily R.",
+      "rating": 5,
+      "comment": "I absolutely loved working with Sofia! I took her non-laser tattoo removal course and it was fantastic! She's been removing one of my tattoos and it looks great. She's very very thorough and provides plenty of information. 10/10 recommend.",
+      "date": "2024-03-05"
+    },
+    {
+      "id": 4,
+      "name": "Amanda K.",
+      "rating": 5,
+      "comment": "I am obsessed with my eyebrows, the shape and shade are exactly what I wanted. Sofia is so professional and informed me of everything I needed to know and guided me through the healing process. It's one of the best choices I made this year. Looking forward to going in for Scalp micro pigmentation!",
+      "date": "2024-02-28"
+    }
+  ]
+} 
